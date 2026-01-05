@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ATS Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+    <h2>ATS Resume Analyzer</h2>
+    <a class="logout" href="/logout">Logout</a>
+    </div>
+
+    <!-- ANALYZE FORM (shown on first load) -->
+    {% if not results %}
+    <form method="post" action="/analyze" enctype="multipart/form-data">
+
+        <label>Upload Job Description (PDF)</label>
+        <input type="file" name="jd_file" accept=".pdf" required>
+
+        <label>Preferred Skills (comma separated)</label>
+        <textarea name="preferred_skills" required></textarea>
+
+        <label>Upload Resumes (Multiple PDFs)</label>
+        <input type="file" name="resumes" accept=".pdf" multiple required>
+
+        <button type="submit">Analyze</button>
+    </form>
+    {% endif %}
+
+    <!-- TOP 5 CANDIDATES -->
+    {% if top_5 and top_5|length > 0 %}
+    <div class="section">
+        <h3>🏆 Top 5 Candidates</h3>
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Resume</th>
+                <th>ATS Score (%)</th>
+            </tr>
+            {% for r in top_5 %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ r.filename }}</td>
+                <td>{{ r.ats_score }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- ALL CANDIDATES -->
+    {% if results and results|length > 0 %}
+    <div class="section">
+        <h3>📄 All Candidates</h3>
+        <table>
+            <tr>
+                <th>Resume</th>
+                <th>ATS Score (%)</th>
+                <th>Matched Skills</th>
+                <th>Not Matched Skills</th>
+            </tr>
+
+            {% for r in results %}
+            <tr>
+                <td>{{ r.filename }}</td>
+                <td>{{ r.ats_score }}</td>
+                <td>
+                    {% for s in r.matched_skills %}
+                        <span class="badge">{{ s }}</span>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for s in r.not_matched_skills %}
+                        <span class="badge red">{{ s }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
