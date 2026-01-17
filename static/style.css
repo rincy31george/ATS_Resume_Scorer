@@ -95,3 +95,188 @@ canvas {
     color: white;
 }
 
+/* ================================
+   GLOBAL STYLES (LOGIN + DASHBOARD)
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6fa;
+}
+
+/* ================================
+   CONTAINER (BIGGER DASHBOARD)
+================================ */
+.container {
+    max-width: 2200px; 
+    /*max-height: 2200px;  /* WAS 900px - now wider like your 2nd image */
+    margin: 100px auto;
+    padding: 10px;
+}
+
+/* ================================
+   HEADERS
+================================ */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 75px;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 70px;   /* WAS 24px */
+    font-weight: 700;
+}
+
+/* ================================
+   LOGOUT BUTTON
+================================ */
+.header .logout {
+    text-decoration: none;
+    color: #4f46e5;
+    font-weight: 600;
+    padding: 10px 20px;   /* Bigger button */
+    border: 2px solid #4f46e5;
+    border-radius: 10px;
+    transition: background 0.3s, color 0.3s;
+    font-size: 25px;
+}
+
+.header .logout:hover {
+    background: #4f46e5;
+    color: white;
+}
+
+/* ================================
+   FORM ELEMENTS (BIGGER INPUTS)
+================================ */
+label {
+    font-weight: 1000;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 26px;   /* Bigger labels */
+}
+
+textarea {
+    width: 100%;
+    height: 350px;
+    padding: 16px;   /* WAS 12px */
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    margin-bottom: 25px;
+    font-size: 25px;
+}
+
+input[type="file"] {
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+/* ================================
+   BUTTON
+================================ */
+button {
+    width: 100%;
+    padding: 16px;   /* Bigger button */
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 27px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.2s ease;
+}
+
+button:hover {
+    background: #4338ca;
+    transform: scale(1.01);
+}
+
+/* ================================
+   ERROR BOX
+================================ */
+.error-box {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+/* ================================
+   SECTIONS & TABLES
+================================ */
+.section {
+    background: white;
+    border-radius: 14px;
+    padding: 30px;
+    margin-top: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.section h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+/* ================================
+   TABLE STYLES
+================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 25px;
+}
+
+th {
+    background: #eef2ff;
+    text-align: left;
+    padding: 14px;
+    font-weight: 700;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* ================================
+   SKILL BADGES
+================================ */
+.badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    margin: 3px;
+}
+
+.badge.red {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ================================
+   CANVAS
+================================ */
+canvas {
+    margin-top: 30px;
+}
+

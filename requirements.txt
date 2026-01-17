@@ -5,3 +5,5 @@ python-multipart
 sentence-transformers
 scikit-learn
 pdfminer.six
+python-docx
+jinja2

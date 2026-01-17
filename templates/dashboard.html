@@ -2,29 +2,55 @@
 <html>
 <head>
     <title>ATS Dashboard</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <!-- *<link rel="stylesheet" href="/static/style.css"> -->
+     <link rel="stylesheet" href="/static/style.css?v=2">
+
 </head>
 <body>
 
 <div class="container">
 
+    <!-- HEADER -->
     <div class="header">
-    <h2>ATS Resume Analyzer</h2>
-    <a class="logout" href="/logout">Logout</a>
+        <h2>ATS Resume Analyzer</h2>
+        <a class="logout" href="/logout">Logout</a>
     </div>
 
-    <!-- ANALYZE FORM (shown on first load) -->
+    <!-- ERROR MESSAGE -->
+    {% if error %}
+    <div class="error-box">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <!-- ANALYZE FORM (shown on first load or error) -->
     {% if not results %}
     <form method="post" action="/analyze" enctype="multipart/form-data">
 
-        <label>Upload Job Description (PDF)</label>
-        <input type="file" name="jd_file" accept=".pdf" required>
+        <label>Job Description</label>
+        <textarea
+            name="jd_text"
+            placeholder="Paste the job description here..."
+            required
+            rows="6"
+        >{{ jd_text or "" }}</textarea>
 
         <label>Preferred Skills (comma separated)</label>
-        <textarea name="preferred_skills" required></textarea>
+        <textarea
+            name="preferred_skills"
+            placeholder="e.g. Python, Selenium, FastAPI, SQL"
+            required
+            rows="3"
+        >{{ preferred_skills or "" }}</textarea>
 
-        <label>Upload Resumes (Multiple PDFs)</label>
-        <input type="file" name="resumes" accept=".pdf" multiple required>
+        <label>Upload Resumes (PDF / DOCX / TXT)</label>
+        <input
+            type="file"
+            name="resumes"
+            accept=".pdf,.docx,.txt"
+            multiple
+            required
+        >
 
         <button type="submit">Analyze</button>
     </form>
